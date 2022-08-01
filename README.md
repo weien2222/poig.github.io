@@ -15,10 +15,10 @@ I love to do project related to quantum computer for fun.
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
-<a href="https://twitter.com/laoliangpoig" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="laoliangpoig" height="30" width="40" /></a>
-<a href="https://linkedin.com/in/jun-liang-tan/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="jun liang tan" height="30" width="40" /></a>
-<a href="https://www.instagram.com/junliang_poig/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="junlaing_poig" height="30" width="40" /></a>
-<a href="https://www.youtube.com/c/小洋xiaoyang" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="小洋xiaoyang" height="30" width="40" /></a>
+<a href="https://twitter.com/laoliangpoig" target="blank"><img align="center" src="images/icons/Social/twitter.svg" alt="laoliangpoig" height="30" width="40" /></a>
+<a href="https://linkedin.com/in/jun-liang-tan/" target="blank"><img align="center" src="images/icons/Social/linked-in-alt.svg" alt="jun liang tan" height="30" width="40" /></a>
+<a href="https://www.instagram.com/junliang_poig/" target="blank"><img align="center" src="images/icons/Social/instagram.svg" alt="junlaing_poig" height="30" width="40" /></a>
+<a href="https://www.youtube.com/c/小洋xiaoyang" target="blank"><img align="center" src="images/icons/Social/youtube.svg" alt="小洋xiaoyang" height="30" width="40" /></a>
 <a href="https://quantumcomputing.stackexchange.com/users/20884/poig" target="blank"><img align="center" src="https://cdn.sstatic.net/sites/quantumcomputing/img/apple-touch-icon.png" alt="小洋xiaoyang" height="40" width="40" /></a>
 </p>
 
