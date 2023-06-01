@@ -43,25 +43,21 @@ public class LoginPanel {
         JButton loginButton = new JButton("Login");
         loginButton.setFont(font);
         frame.add(loginButton, constraints);
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = usernameField.getText();
-                char[] password = passwordField.getPassword();
-                // process login here
-                System.out.println("Username: " + username);
-                System.out.println("Password: " + new String(password));
-                
-                // todo: the login logic happen here
-                //example
-                if (username.equals("admin") && new String(password).equals("admin")) {
-                    // open new page
-                    frame.setVisible(false);
-                    new menu();
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Incorrect username or password");
-                }
-                
+        loginButton.addActionListener((ActionEvent e) -> {
+            String username = usernameField.getText();
+            char[] password = passwordField.getPassword();
+            // process login here
+            System.out.println("Username: " + username);
+            System.out.println("Password: " + new String(password));
+            
+            // todo: the login logic happen here
+            //example
+            if (username.equals("admin") && new String(password).equals("admin")) {
+                // open new page
+                frame.setVisible(false);
+                new menu();
+            } else {
+                JOptionPane.showMessageDialog(frame, "Incorrect username or password");
             }
         });
         // create register button
