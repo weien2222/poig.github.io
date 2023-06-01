@@ -1,21 +1,10 @@
-package user_function;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author poig
- */
-
-import javax.swing.*;
 import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
+import javax.swing.*;
 
-public class Article extends JPanel {
-    public Article() {
+public class TabbedPaneExample extends JPanel {
+    public TabbedPaneExample() {
         super(new GridLayout(1, 1));
 
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -51,7 +40,7 @@ public class Article extends JPanel {
     }
 
     protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = Article.class.getResource(path);
+        java.net.URL imgURL = TabbedPaneExample.class.getResource(path);
         if (imgURL != null) {
             return new ImageIcon(imgURL);
         } else {
@@ -64,7 +53,7 @@ public class Article extends JPanel {
         JFrame frame = new JFrame("TabbedPaneExample");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.add(new Article(), BorderLayout.CENTER);
+        frame.add(new TabbedPaneExample(), BorderLayout.CENTER);
 
         frame.pack();
         frame.setVisible(true);

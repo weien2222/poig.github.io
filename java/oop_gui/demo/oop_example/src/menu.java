@@ -10,7 +10,7 @@
  *
  * @author junli
  */
-import user_function.quiz;
+import user_function.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -76,6 +76,16 @@ public class menu extends JPanel {
         menu.add(NewsPaper, constraints);
         NewsPaper.addActionListener((ActionEvent e) -> {
             //do something
+            NewsPaper.setEnabled(false);
+            NewsPaper NewNewsPaper = new NewsPaper(width, height);
+            
+            // Add a WindowListener to enable the button when the new JFrame is closed
+            NewNewsPaper.addQuizWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    NewsPaper.setEnabled(true);
+                }
+            });
         });
         
         constraints.gridx = 5;
@@ -86,6 +96,7 @@ public class menu extends JPanel {
         menu.add(ArticleButton, constraints);
         ArticleButton.addActionListener((ActionEvent e) -> {
             //do something
+            new Article();
             
         });
         
@@ -118,7 +129,7 @@ public class menu extends JPanel {
         LogoutButton.setFont(font);
         menu.add(LogoutButton, constraints);
         LogoutButton.addActionListener((ActionEvent e) -> {
-            //do something
+            // todo: this should close all exist window
             menu.dispose();
             main.main(new String[0]);
         });
