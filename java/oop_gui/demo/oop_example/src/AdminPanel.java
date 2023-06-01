@@ -7,10 +7,6 @@
  *
  * @author poig
  */
-
-
-public class data {
-    
-    
+public class AdminPanel {
     
 }

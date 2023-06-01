@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,6 +10,7 @@
  *
  * @author junli
  */
+import user_function.quiz;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,6 +31,7 @@ public class menu extends JPanel {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) (screenSize.getWidth() * 0.5);
         int height = (int) (screenSize.getHeight() * 0.5);
+        // for user-log
         System.out.println("Enter menu");
         menu.setSize(width, height);
         menu.setTitle("menu"); // set title here
@@ -50,14 +54,24 @@ public class menu extends JPanel {
         loginButton.setFont(font);
         menu.add(loginButton, constraints);
         loginButton.addActionListener((ActionEvent e) -> {
-            //do something
-            new quiz(width, height);
+            // do something
+            // disable the button when the new JFrame is opened
+            loginButton.setEnabled(false);
+            quiz NewQuiz = new quiz(width, height);
+            
+            // Add a WindowListener to enable the button when the new JFrame is closed
+            NewQuiz.addQuizWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    loginButton.setEnabled(true);
+                }
+            });
         });
         
         constraints.gridx = 3;
         constraints.gridy = 0;
         constraints.gridwidth = 2;
-        JButton NewsPaper = new JButton("newspaper");
+        JButton NewsPaper = new JButton("Newspaper");
         NewsPaper.setFont(font);
         menu.add(NewsPaper, constraints);
         NewsPaper.addActionListener((ActionEvent e) -> {
@@ -67,7 +81,7 @@ public class menu extends JPanel {
         constraints.gridx = 5;
         constraints.gridy = 0;
         constraints.gridwidth = 2;
-        JButton ArticleButton = new JButton("article");
+        JButton ArticleButton = new JButton("Article");
         ArticleButton.setFont(font);
         menu.add(ArticleButton, constraints);
         ArticleButton.addActionListener((ActionEvent e) -> {
@@ -90,7 +104,7 @@ public class menu extends JPanel {
         constraints.gridx = 3;
         constraints.gridy = 1;
         constraints.gridwidth = 2;
-        JButton ProfileButton = new JButton("profile");
+        JButton ProfileButton = new JButton("Profile");
         ProfileButton.setFont(font);
         menu.add(ProfileButton, constraints);
         ProfileButton.addActionListener((ActionEvent e) -> {
@@ -100,7 +114,7 @@ public class menu extends JPanel {
         constraints.gridx = 5;
         constraints.gridy = 1;
         constraints.gridwidth = 2;
-        JButton LogoutButton = new JButton("logout");
+        JButton LogoutButton = new JButton("Logout");
         LogoutButton.setFont(font);
         menu.add(LogoutButton, constraints);
         LogoutButton.addActionListener((ActionEvent e) -> {
@@ -110,5 +124,6 @@ public class menu extends JPanel {
         });
         
         menu.setVisible(true);
+        menu.setLocationRelativeTo(null); // Center the frame on the screen
     }
 }

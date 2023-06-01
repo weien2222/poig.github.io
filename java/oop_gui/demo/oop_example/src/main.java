@@ -36,6 +36,7 @@ public class main {
         new LoginPanel(frame, width);
        
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null); // Center the frame on the screen
     }
 }
 
