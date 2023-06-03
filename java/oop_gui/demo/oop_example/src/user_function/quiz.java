@@ -4,7 +4,6 @@ package user_function;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author poig
@@ -13,16 +12,44 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class quiz  extends JPanel {
+public class quiz extends JPanel {
+
+    // Declare variables
+    JLabel question;
+    JRadioButton option1;
+    JRadioButton option2;
+    JRadioButton option3;
+    JRadioButton option4;
+    ButtonGroup optionsGroup;
+    JButton nextButton;
+    JButton hintButton;
+    int currentQuestion = 0;
+
+    // Array of questions
+    String[][] questions = {
+        {"Do you know what sustainable fashion is?",
+            "It is fashion that is ethically made and environmentally friendly.",
+            "It is a kind of fashion that will become outdated in a short time.",
+            "It is a kind of fashion that is very lucrative.",
+            "All above"},
+        {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},
+        {"Question 3", "Option 1", "Option 2", "Option 3", "Option 4"}
+    };
+
+    String[] answers = {
+        "1",
+        "2",
+        "3",};
+
     private final JFrame quiz;
-    
+
     public quiz(int width, int height) {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-        
+
         quiz = new JFrame();
         quiz.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         // for user-log
@@ -31,24 +58,118 @@ public class quiz  extends JPanel {
         height = (int) (height * 0.5);
         quiz.setSize(width, height);
         quiz.setTitle("quiz"); // set title here
-        
-        
+
         quiz.setLayout(new GridBagLayout());
         // font-size
-        Font font = new Font("Arial", Font.PLAIN, width/40);
-        
+        Font font = new Font("Arial", Font.PLAIN, width / 40);
+
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.gridx = 0;
         constraints.gridy = 0;
-        
+
         quiz.setVisible(true);
         quiz.setLocationRelativeTo(null); // Center the frame on the screen
+
+        // Initialize components
+        question = new JLabel(questions[currentQuestion][0]);
+        option1 = new JRadioButton(questions[currentQuestion][1]);
+        option2 = new JRadioButton(questions[currentQuestion][2]);
+        option3 = new JRadioButton(questions[currentQuestion][3]);
+        option4 = new JRadioButton(questions[currentQuestion][4]);
+        optionsGroup = new ButtonGroup();
+        nextButton = new JButton("Submit");
+
+        // set font
+        question.setFont(font);
+        option1.setFont(font);
+        option2.setFont(font);
+        option3.setFont(font);
+        option4.setFont(font);
+
+        // Add components to frame
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        constraints.gridwidth = 1;
+        quiz.add(question, constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        quiz.add(option1, constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        quiz.add(option2, constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 3;
+        constraints.gridwidth = 1;
+        quiz.add(option3, constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 4;
+        constraints.gridwidth = 1;
+        quiz.add(option4, constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 5;
+        constraints.gridwidth = 1;
+        quiz.add(nextButton, constraints);
+
+        option1.setActionCommand("1");
+        option2.setActionCommand("2");
+        option3.setActionCommand("3");
+        option4.setActionCommand("4");
+
+        // Add radio buttons to button group
+        optionsGroup.add(option1);
+        optionsGroup.add(option2);
+        optionsGroup.add(option3);
+        optionsGroup.add(option4);
+
+        // Add action listener to next button
+        // nextButton.addActionListener((ActionListener) this);
+        nextButton.addActionListener((ActionEvent e) -> {
+            // display registration screen
+            if (optionsGroup.getSelection() == null) {
+                JOptionPane.showMessageDialog(this, "where is your answer!");
+            } else {
+            if (optionsGroup.getSelection().getActionCommand().equals(answers[currentQuestion])) {
+                JOptionPane.showMessageDialog(quiz, "correct!");
+            } else {
+                JOptionPane.showMessageDialog(quiz, "you fucked up, Next!!");
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                question.setText(questions[currentQuestion][0]);
+                option1.setText(questions[currentQuestion][1]);
+                option2.setText(questions[currentQuestion][2]);
+                option3.setText(questions[currentQuestion][3]);
+                option4.setText(questions[currentQuestion][4]);
+            } else {
+                JOptionPane.showMessageDialog(quiz, "End of quiz!");
+                quiz.dispose();
+            }
+            optionsGroup.clearSelection();
+        }});
+
+        // Set frame properties
+        setSize(400, 400);
+        setVisible(true);
     }
-    
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == nextButton) {
+
+        } else if (e.getSource() == hintButton) {
+
+        }
+    }
+
     public void addQuizWindowListener(WindowListener listener) {
         this.quiz.addWindowListener(listener);
     }
-    
+
+    public static void main(String[] args) {
+        new quiz(1000, 600);
+    }
+
 }
