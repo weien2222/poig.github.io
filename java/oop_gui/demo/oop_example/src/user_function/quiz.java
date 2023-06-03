@@ -24,22 +24,51 @@ public class quiz extends JPanel {
     JButton nextButton;
     JButton hintButton;
     int currentQuestion = 0;
+    int ques_type = 0;
+    GridBagConstraints constraints;
+    Font font;
+    JButton quesButton;
 
     // Array of questions
-    String[][] questions = {
-        {"Do you know what sustainable fashion is?",
+    String[][][] questions = {
+        // sustainable Fashion
+        {{"Do you know what sustainable fashion is?",
             "It is fashion that is ethically made and environmentally friendly.",
             "It is a kind of fashion that will become outdated in a short time.",
             "It is a kind of fashion that is very lucrative.",
             "All above"},
-        {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},
-        {"Question 3", "Option 1", "Option 2", "Option 3", "Option 4"}
+            {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},
+            {"Question 3", "Option 1", "Option 2", "Option 3", "Option 4"}},
+
+        //Global Warming
+        {{"Global warming is a consequence of ____",
+            "Acid rain",
+            "Greenhouse effect",
+            "Depletion of the ozone layer",
+            "Radioactive fall out"},
+            {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},},
+        // 
+        {{"Question 1", "Option 1", "Option 2", "Option 3", "Option 4"},
+            {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},
+        }};
+
+    String[][] answers = {
+        {"1",
+            "2",
+            "3",},
+        {"1",
+            "2",
+            "3"}
     };
 
-    String[] answers = {
-        "1",
-        "2",
-        "3",};
+    String[][] hints = {
+        {"1",
+            "2",
+            "3",},
+        {"1",
+            "2",
+            "3"}
+    };
 
     private final JFrame quiz;
 
@@ -57,29 +86,81 @@ public class quiz extends JPanel {
         width = (int) (width * 0.5);
         height = (int) (height * 0.5);
         quiz.setSize(width, height);
-        quiz.setTitle("quiz"); // set title here
+        quiz.setTitle("quiz select"); // set title here
 
         quiz.setLayout(new GridBagLayout());
         // font-size
-        Font font = new Font("Arial", Font.PLAIN, width / 40);
+        font = new Font("Arial", Font.PLAIN, width / 40);
 
-        GridBagConstraints constraints = new GridBagConstraints();
+        constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(5, 5, 5, 5);
+
         constraints.gridx = 0;
         constraints.gridy = 0;
-
+        
+        // first button
+        quesButton = new JButton("fashion");
+        quesButton.setFont(font);
+        quiz.add(quesButton, constraints);
+        quesButton.addActionListener((ActionEvent e) -> {
+            ques_type = 0;
+            quiz.getContentPane().removeAll();
+            QuizPanel();
+            quiz.revalidate();
+            quiz.repaint();
+        });
+        
+        //second button
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        quesButton = new JButton("Global Warming");
+        quesButton.setFont(font);
+        quiz.add(quesButton, constraints);
+        quesButton.addActionListener((ActionEvent e) -> {
+            ques_type = 1;
+            quiz.getContentPane().removeAll();
+            QuizPanel();
+            quiz.revalidate();
+            quiz.repaint();
+        });
+        
+        //second button
+        constraints.gridx = 3;
+        constraints.gridy = 0;
+        quesButton = new JButton("Sustainable Lifestyle");
+        quesButton.setFont(font);
+        quiz.add(quesButton, constraints);
+        quesButton.addActionListener((ActionEvent e) -> {
+            ques_type = 2;
+            quiz.getContentPane().removeAll();
+            QuizPanel();
+            quiz.revalidate();
+            quiz.repaint();
+        });
+        
+        
+        
+        
+        
         quiz.setVisible(true);
         quiz.setLocationRelativeTo(null); // Center the frame on the screen
 
+        // move into the quiz panel
+        //quiz.getContentPane().removeAll();
+    }
+
+    public void QuizPanel() {
+
         // Initialize components
-        question = new JLabel(questions[currentQuestion][0]);
-        option1 = new JRadioButton(questions[currentQuestion][1]);
-        option2 = new JRadioButton(questions[currentQuestion][2]);
-        option3 = new JRadioButton(questions[currentQuestion][3]);
-        option4 = new JRadioButton(questions[currentQuestion][4]);
+        question = new JLabel(questions[ques_type][currentQuestion][0]);
+        option1 = new JRadioButton(questions[ques_type][currentQuestion][1]);
+        option2 = new JRadioButton(questions[ques_type][currentQuestion][2]);
+        option3 = new JRadioButton(questions[ques_type][currentQuestion][3]);
+        option4 = new JRadioButton(questions[ques_type][currentQuestion][4]);
         optionsGroup = new ButtonGroup();
         nextButton = new JButton("Submit");
+        hintButton = new JButton("Hints");
 
         // set font
         question.setFont(font);
@@ -87,6 +168,8 @@ public class quiz extends JPanel {
         option2.setFont(font);
         option3.setFont(font);
         option4.setFont(font);
+        nextButton.setFont(font);
+        hintButton.setFont(font);
 
         // Add components to frame
         constraints.gridx = 1;
@@ -113,6 +196,10 @@ public class quiz extends JPanel {
         constraints.gridy = 5;
         constraints.gridwidth = 1;
         quiz.add(nextButton, constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 6;
+        constraints.gridwidth = 1;
+        quiz.add(hintButton, constraints);
 
         option1.setActionCommand("1");
         option2.setActionCommand("2");
@@ -132,36 +219,33 @@ public class quiz extends JPanel {
             if (optionsGroup.getSelection() == null) {
                 JOptionPane.showMessageDialog(this, "where is your answer!");
             } else {
-            if (optionsGroup.getSelection().getActionCommand().equals(answers[currentQuestion])) {
-                JOptionPane.showMessageDialog(quiz, "correct!");
-            } else {
-                JOptionPane.showMessageDialog(quiz, "you fucked up, Next!!");
+                if (optionsGroup.getSelection().getActionCommand().equals(answers[ques_type][currentQuestion])) {
+                    JOptionPane.showMessageDialog(quiz, "correct!");
+                } else {
+                    JOptionPane.showMessageDialog(quiz, "you fucked up, Next!!");
+                }
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    question.setText(questions[ques_type][currentQuestion][0]);
+                    option1.setText(questions[ques_type][currentQuestion][1]);
+                    option2.setText(questions[ques_type][currentQuestion][2]);
+                    option3.setText(questions[ques_type][currentQuestion][3]);
+                    option4.setText(questions[ques_type][currentQuestion][4]);
+                } else {
+                    JOptionPane.showMessageDialog(quiz, "End of quiz!");
+                    quiz.dispose();
+                }
+                optionsGroup.clearSelection();
             }
-            currentQuestion++;
-            if (currentQuestion < questions.length) {
-                question.setText(questions[currentQuestion][0]);
-                option1.setText(questions[currentQuestion][1]);
-                option2.setText(questions[currentQuestion][2]);
-                option3.setText(questions[currentQuestion][3]);
-                option4.setText(questions[currentQuestion][4]);
-            } else {
-                JOptionPane.showMessageDialog(quiz, "End of quiz!");
-                quiz.dispose();
-            }
-            optionsGroup.clearSelection();
-        }});
+        });
+
+        hintButton.addActionListener((ActionEvent e) -> {
+            JOptionPane.showMessageDialog(quiz, hints[ques_type][currentQuestion]);
+        });
 
         // Set frame properties
         setSize(400, 400);
         setVisible(true);
-    }
-
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == nextButton) {
-
-        } else if (e.getSource() == hintButton) {
-
-        }
     }
 
     public void addQuizWindowListener(WindowListener listener) {
