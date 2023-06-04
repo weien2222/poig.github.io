@@ -77,7 +77,10 @@ public class quiz extends JPanel {
         //answer for the global warming
         {"1",
             "2",
-            "3"}
+            "3"},
+        
+        {"1",
+        "2"}
     };
 
     String[][] hints = {
@@ -251,7 +254,7 @@ public class quiz extends JPanel {
                     JOptionPane.showMessageDialog(quiz, "you fucked up, Next!!");
                 }
                 currentQuestion++;
-                if (currentQuestion < questions.length) {
+                if (currentQuestion < questions[ques_type].length) {
                     question.setText(questions[ques_type][currentQuestion][0]);
                     option1.setText(questions[ques_type][currentQuestion][1]);
                     option2.setText(questions[ques_type][currentQuestion][2]);
