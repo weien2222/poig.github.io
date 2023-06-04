@@ -32,42 +32,72 @@ public class quiz extends JPanel {
     // Array of questions
     String[][][] questions = {
         // sustainable Fashion
+        // question 1
         {{"Do you know what sustainable fashion is?",
+            // option 1
             "It is fashion that is ethically made and environmentally friendly.",
+            // option 2
             "It is a kind of fashion that will become outdated in a short time.",
+            // option 3
             "It is a kind of fashion that is very lucrative.",
+            //option 4
             "All above"},
+            // question 2
             {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},
+            // question 3
             {"Question 3", "Option 1", "Option 2", "Option 3", "Option 4"}},
 
-        //Global Warming
+        // Global Warming
+        // qeustion 1
         {{"Global warming is a consequence of ____",
+            // option 1
             "Acid rain",
+            // option 2
             "Greenhouse effect",
+            // option 3
             "Depletion of the ozone layer",
+            // option 4
             "Radioactive fall out"},
             {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},},
-        // 
+        
+// same for the last topics
         {{"Question 1", "Option 1", "Option 2", "Option 3", "Option 4"},
-            {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},
-        }};
+            {"Question 2", "Option 1", "Option 2", "Option 3", "Option 4"},}
+    };
 
     String[][] answers = {
+        // answer for the sustainable Fashion
+        // answer for question 1
         {"1",
+            // answer for quesiton 2
             "2",
+            // answer for question 3
             "3",},
+        
+        //answer for the global warming
         {"1",
             "2",
             "3"}
     };
 
     String[][] hints = {
+        // hints for the sustainable Fashion
+        // hints for question 1
         {"1",
+            // hint for question 2
             "2",
             "3",},
+        // hints for the global warming
+        // hints for question 1
         {"1",
+            // hints for question 2
             "2",
-            "3"}
+            "3"},
+        
+        // same for others
+        {"",
+            "",
+            ""}
     };
 
     private final JFrame quiz;
@@ -138,10 +168,6 @@ public class quiz extends JPanel {
             quiz.revalidate();
             quiz.repaint();
         });
-        
-        
-        
-        
         
         quiz.setVisible(true);
         quiz.setLocationRelativeTo(null); // Center the frame on the screen
