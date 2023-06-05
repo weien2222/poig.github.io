@@ -15,11 +15,7 @@ import java.awt.event.*;
 public class quiz extends JPanel {
 
     // Declare variables
-    JLabel question;
-    JRadioButton option1;
-    JRadioButton option2;
-    JRadioButton option3;
-    JRadioButton option4;
+    //JLabel question;
     ButtonGroup optionsGroup;
     JButton nextButton;
     JButton hintButton;
@@ -360,55 +356,55 @@ public class quiz extends JPanel {
         //answer for the global warming
         //answer for question 1
         {"Greenhouse effect",
-        //answer for question 2
-        "In northern latitudes",
-        //answer for question 3
-        "True",
-        //answer for question 4
-        "All of the above",
-        //answer for question 5
-        "True",
-        //answer for question 6
-        "50 to 60'F(28 to 33'C)cooler",
-        //answer for question 7
-        "Nitrogen",
-        //answer for question 8
-        "2,000 years",
-        //answer for question 9
-        "Average precipitation increases",
-        //answer for question 10
-        "Carbon dioxide"},
+            //answer for question 2
+            "In northern latitudes",
+            //answer for question 3
+            "True",
+            //answer for question 4
+            "All of the above",
+            //answer for question 5
+            "True",
+            //answer for question 6
+            "50 to 60'F(28 to 33'C)cooler",
+            //answer for question 7
+            "Nitrogen",
+            //answer for question 8
+            "2,000 years",
+            //answer for question 9
+            "Average precipitation increases",
+            //answer for question 10
+            "Carbon dioxide"},
         //answer for sustainable lifestyle
         //answer for question 1
         {"A method of reducing one's carbon footprint",
-        //answer for question 2
-        "Continue switching on lights and unplug devices when you're not using them",
-        //answer for question 3
-        "To develop renewable energy technologiess",
-        //answer for question 4
-        "SDG 1: No Poverty",
-        //answer for question 5
-        "All of above",
-        //answer for question 6
-        "Compact fluorescent bulbs",
-        //answer for question 7
-        "Plastic pollution",
-        //answer for question 8
-        "Vehicle exhaust emissions",
-        //answer for question 9
-        "To certify and rate the environmental performance of buildings",
-        //answer for question 10
-        "Agricultural expansion",
-        //answeer for question 11
-        "Composting food waste",
-        //answer for question 12
-        "Energy",
-        //answer for question 13
-        "Integrated Pest Management(IPM)techniques",
-        //answer for question 14
-        "Promoting responsible tourism and culturaal preservation",
-        //answser for question 15
-        "Green curriculum"}
+            //answer for question 2
+            "Continue switching on lights and unplug devices when you're not using them",
+            //answer for question 3
+            "To develop renewable energy technologiess",
+            //answer for question 4
+            "SDG 1: No Poverty",
+            //answer for question 5
+            "All of above",
+            //answer for question 6
+            "Compact fluorescent bulbs",
+            //answer for question 7
+            "Plastic pollution",
+            //answer for question 8
+            "Vehicle exhaust emissions",
+            //answer for question 9
+            "To certify and rate the environmental performance of buildings",
+            //answer for question 10
+            "Agricultural expansion",
+            //answeer for question 11
+            "Composting food waste",
+            //answer for question 12
+            "Energy",
+            //answer for question 13
+            "Integrated Pest Management(IPM)techniques",
+            //answer for question 14
+            "Promoting responsible tourism and culturaal preservation",
+            //answser for question 15
+            "Green curriculum"}
     };
 
     String[][] hints = {
@@ -436,56 +432,56 @@ public class quiz extends JPanel {
         //explanation for the global warming
         //explanation for question 1
         {"Human activities, particularly the burning of fossil fuels (such as coal, oil, and natural gas) and deforestation, have significantly increased the concentrations of greenhouse gases in the atmosphere. This increase in greenhouse gases intensifies the greenhouse effect, leading to global warming.",
-        //explanation for question 2
-        "Some of the fastest-warming regions on the planet include Alaska, Greenland and Siberia. These Arctic environments are highly sensitive to even small temperature increases, which can melt sea ice, ice sheets and permafrost, and lead to changes in Earth's reflectance 'albedo'.",
-        //explanation for question 3
-        "Although most locations on the planet have recorded increased temperatures since 1880, changes in global ocean and atmospheric circulation patterns have created small-scale temperature decreases in a few local regions.",
-        //explanation for question 
-        "For the past few decades, scientists have had the benefit of global satellite data. We have accurate ground-based measurements that reach back just over a century. 'Proxy' methods, such as tree ring and ice core analysis, are used to reconstruct climate records before the rise of modern instruments.",
-        //explanation for question 5
-        "Air pollution can take the form of fine particles called 'aerosols' which both absorb and scatter the sun's radiation. Both natural and man-made aerosols, such as dust, sea salt, soot and sulphates, affect the climate by reflecting radiation that is transmitted through the atmosphere.",
-        //explanation for question 6
-        "The greenhouse effect is a naturally occurring physical process that warms the Earth's surface with energy from the atmosphere. Without the effect, Earth's average surface temperature would be well below freezing.",
-        //explanation for question 7
-        "Heat-trapping greenhouse gases absorb and emit radiation within the thermal infrared range. Water vapor, carbon dioxide and methane are Earth's most abundant greenhouse gases. Nitrogen, which makes up 80 percent of Earth's atmosphere, is not a greenhouse gas. This is because its molecules, which contain two atoms of the same element (nitrogen), are unaffected by infrared light.",
-        //explanation for question 8
-        "Although some think that the 'Medieval Warm Period' (approx. 800 – 1200 AD) was a global phenomenon, recent studies, including one by Neukom et al. 2019, show that there is no evidence that there were uniform warm and cold periods on Earth over the last 2,000 years.",
-        //explanation for question 9
-        "Higher temperatures give rise to a more active water cycle, which means faster and greater evaporation and precipitation and more extreme weather events.",
-        //explanation for question 10
-        "Some people mistakenly believe water vapor is the main driver of Earth’s current warming. But increased water vapor doesn’t cause human-produced global warming. Instead, it’s a consequence of it. Increased water vapor in the atmosphere supercharges the warming caused by other greenhouse gases, such as carbon dioxide, followed by methane."},
+            //explanation for question 2
+            "Some of the fastest-warming regions on the planet include Alaska, Greenland and Siberia. These Arctic environments are highly sensitive to even small temperature increases, which can melt sea ice, ice sheets and permafrost, and lead to changes in Earth's reflectance 'albedo'.",
+            //explanation for question 3
+            "Although most locations on the planet have recorded increased temperatures since 1880, changes in global ocean and atmospheric circulation patterns have created small-scale temperature decreases in a few local regions.",
+            //explanation for question 
+            "For the past few decades, scientists have had the benefit of global satellite data. We have accurate ground-based measurements that reach back just over a century. 'Proxy' methods, such as tree ring and ice core analysis, are used to reconstruct climate records before the rise of modern instruments.",
+            //explanation for question 5
+            "Air pollution can take the form of fine particles called 'aerosols' which both absorb and scatter the sun's radiation. Both natural and man-made aerosols, such as dust, sea salt, soot and sulphates, affect the climate by reflecting radiation that is transmitted through the atmosphere.",
+            //explanation for question 6
+            "The greenhouse effect is a naturally occurring physical process that warms the Earth's surface with energy from the atmosphere. Without the effect, Earth's average surface temperature would be well below freezing.",
+            //explanation for question 7
+            "Heat-trapping greenhouse gases absorb and emit radiation within the thermal infrared range. Water vapor, carbon dioxide and methane are Earth's most abundant greenhouse gases. Nitrogen, which makes up 80 percent of Earth's atmosphere, is not a greenhouse gas. This is because its molecules, which contain two atoms of the same element (nitrogen), are unaffected by infrared light.",
+            //explanation for question 8
+            "Although some think that the 'Medieval Warm Period' (approx. 800 – 1200 AD) was a global phenomenon, recent studies, including one by Neukom et al. 2019, show that there is no evidence that there were uniform warm and cold periods on Earth over the last 2,000 years.",
+            //explanation for question 9
+            "Higher temperatures give rise to a more active water cycle, which means faster and greater evaporation and precipitation and more extreme weather events.",
+            //explanation for question 10
+            "Some people mistakenly believe water vapor is the main driver of Earth’s current warming. But increased water vapor doesn’t cause human-produced global warming. Instead, it’s a consequence of it. Increased water vapor in the atmosphere supercharges the warming caused by other greenhouse gases, such as carbon dioxide, followed by methane."},
         //for sustainable lifestye
-        
+
         // hints for question 1
         {"Carbon footprint: an environmental indicator measuring greenhouse gas emissions, expressed as CO2 equivalents, from specific activities.",
-        //hints for question 2
-        "Carbon footprint's importance: safeguards environment, cuts CO2 emissions, conserves resources, boosts local economy through sustainable practices.",
-        //hints for question 3
-        "MGTC fosters renewable energy development in Malaysia, promoting green technology adoption to combat climate change and drive sustainable growth.",
-        //hints for question 4
-        "SDGs: Transforming our world, ending poverty and inequality, protecting the planet, promoting health, justice, and prosperity for all. No one left behind.",
-        //hints for question 5
-        "Embrace zero waste: consciously replace daily items to minimize excessive waste, particularly plastic waste. Practice the 5 R's: refuse, reduce, reuse, repurpose, and recycle. Use reusable Beeswax wraps to reduce single-use plastic wrap and support local art.",
-        //hints for question 6
-        "Compact fluorescent bulbs: energy-efficient option consuming less electricity than incandescent bulbs. Halogen and neon bulbs are less efficient.",
-        //hints for question 7
-        "Plastic pollution dominates Malaysia's marine pollution, arising from single-use plastics, microplastics, and plastic debris, harming marine ecosystems.",
-        //hints for question 8
-        "Vehicle exhaust, especially from motor vehicles, is the primary cause of urban air pollution in Malaysia, impacting health and air quality due to traffic congestion.",
-        //hints for question 9
-        "Green Building Index (GBI) certifies buildings in Malaysia based on environmental performance, promoting sustainable practices and technologies in construction.",
-        //hints for question 10
-        "Agricultural expansion, mainly for oil palm plantations, drives deforestation in Malaysia, with significant environmental consequences.",
-        //hints for question 11
-        "Composting food waste in Malaysia reduces waste and promotes environmental conservation through sustainable practices.",
-        //hints for question 12
-        "The energy sector is the largest contributor to greenhouse gas emissions in Malaysia, primarily due to the use of fossil fuels.",
-        //hints for question 13
-        "IPM: Sustainable agriculture approach combining strategies for pest management, focusing on prevention, control, and environmental safety.",
-        //hints for question 14
-        "Responsible tourism preserves Malaysia's cultural heritage by raising awareness, promoting respectful behavior, and supporting conservation initiatives.",
-        //hints for question 15
-        "Green curriculum refers to the incorporation of sustainability principles and environmental awareness into educational programs, ensuring students learn about sustainable practices and develop a sense of environmental responsibility."}
+            //hints for question 2
+            "Carbon footprint's importance: safeguards environment, cuts CO2 emissions, conserves resources, boosts local economy through sustainable practices.",
+            //hints for question 3
+            "MGTC fosters renewable energy development in Malaysia, promoting green technology adoption to combat climate change and drive sustainable growth.",
+            //hints for question 4
+            "SDGs: Transforming our world, ending poverty and inequality, protecting the planet, promoting health, justice, and prosperity for all. No one left behind.",
+            //hints for question 5
+            "Embrace zero waste: consciously replace daily items to minimize excessive waste, particularly plastic waste. Practice the 5 R's: refuse, reduce, reuse, repurpose, and recycle. Use reusable Beeswax wraps to reduce single-use plastic wrap and support local art.",
+            //hints for question 6
+            "Compact fluorescent bulbs: energy-efficient option consuming less electricity than incandescent bulbs. Halogen and neon bulbs are less efficient.",
+            //hints for question 7
+            "Plastic pollution dominates Malaysia's marine pollution, arising from single-use plastics, microplastics, and plastic debris, harming marine ecosystems.",
+            //hints for question 8
+            "Vehicle exhaust, especially from motor vehicles, is the primary cause of urban air pollution in Malaysia, impacting health and air quality due to traffic congestion.",
+            //hints for question 9
+            "Green Building Index (GBI) certifies buildings in Malaysia based on environmental performance, promoting sustainable practices and technologies in construction.",
+            //hints for question 10
+            "Agricultural expansion, mainly for oil palm plantations, drives deforestation in Malaysia, with significant environmental consequences.",
+            //hints for question 11
+            "Composting food waste in Malaysia reduces waste and promotes environmental conservation through sustainable practices.",
+            //hints for question 12
+            "The energy sector is the largest contributor to greenhouse gas emissions in Malaysia, primarily due to the use of fossil fuels.",
+            //hints for question 13
+            "IPM: Sustainable agriculture approach combining strategies for pest management, focusing on prevention, control, and environmental safety.",
+            //hints for question 14
+            "Responsible tourism preserves Malaysia's cultural heritage by raising awareness, promoting respectful behavior, and supporting conservation initiatives.",
+            //hints for question 15
+            "Green curriculum refers to the incorporation of sustainability principles and environmental awareness into educational programs, ensuring students learn about sustainable practices and develop a sense of environmental responsibility."}
     };
 
     int score_lenght = questions[ques_type].length;
@@ -565,20 +561,24 @@ public class quiz extends JPanel {
         // move into the quiz panel
         //quiz.getContentPane().removeAll();
     }
-    
+
     public void RepaintQuestion() {
         // Initialize components
         grid_pos = 0;
-        
+
         // question component
-        question = new JLabel(questions[ques_type][currentQuestion][0]);
+        JTextArea question = new JTextArea(questions[ques_type][currentQuestion][0]);
         question.setFont(font);
         constraints.gridx = 1;
         constraints.gridy = 0;
         constraints.gridwidth = 1;
+        JScrollPane scrollPane = new JScrollPane(question);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        //scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        quiz.getContentPane().add(scrollPane);
         quiz.add(question, constraints);
         grid_pos++;
-        
+
         // answer component
         optionsGroup = new ButtonGroup();
         for (int i = 1; i < questions[ques_type][currentQuestion].length; i++) {
@@ -586,25 +586,25 @@ public class quiz extends JPanel {
             option.setFont(font);
             constraints.gridy = grid_pos;
             quiz.add(option, constraints);
-            
+
             option.setActionCommand(questions[ques_type][currentQuestion][i]);
             optionsGroup.add(option);
             grid_pos++;
         }
-        
+
         // next button component
         nextButton = new JButton("Submit");
         nextButton.setFont(font);
         constraints.gridy = grid_pos;
         quiz.add(nextButton, constraints);
         grid_pos++;
-        
+
         // hin button component
         hintButton = new JButton("Hints");
         hintButton.setFont(font);
         constraints.gridy = grid_pos;
         quiz.add(hintButton, constraints);
-        
+
         // Add action listener to next button
         // nextButton.addActionListener((ActionListener) this);
         nextButton.addActionListener((ActionEvent e) -> {
@@ -641,6 +641,7 @@ public class quiz extends JPanel {
         hintButton.addActionListener((ActionEvent e) -> {
             JOptionPane.showMessageDialog(quiz, hints[ques_type][currentQuestion]);
         });
+        quiz.pack();
     }
 
     public void QuizPanel() {
@@ -656,7 +657,7 @@ public class quiz extends JPanel {
     }
 
     public static void main(String[] args) {
-        new quiz(1000, 600);
+        new quiz(1600, 600);
     }
 
 }
