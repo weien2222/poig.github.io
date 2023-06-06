@@ -13,7 +13,10 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 class user_profile {
@@ -31,7 +34,7 @@ class user_profile {
 
 public class data {
 
-    public String[] user_readout(String username) {
+    public Map user_info() {
         // for user login
         Map<String, user_profile> empty_user = new HashMap<>();
         // read folder
@@ -48,16 +51,36 @@ public class data {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return empty_user;
+
+    }
+    
+    
+    public List gmail_list() {
+        Map empty_user = user_info();
+        List gmails = new ArrayList();
+        for (Iterator it = empty_user.values().iterator(); it.hasNext();) {
+            user_profile profile = (user_profile) it.next();
+            gmails.add(profile.gmail);
+        }
+        return gmails;
+    }
+
+    
+    
+    public String[] user_readout(String username) {
         
+        Map empty_user = user_info();
         try {
-            String[] userinfo = {empty_user.get(username).password, empty_user.get(username).gmail, empty_user.get(username).bio};
-            return userinfo;
+            user_profile userinfo = (user_profile) empty_user.get(username);
+            String [] returninfo = {userinfo.password, userinfo.gmail,userinfo.bio};
+            return returninfo;
         } catch (RuntimeException e) {
             System.out.println("user exist");
             String[] none = {"None"};
             return none;
         }
-
     }
 
     public String user_login(String username, String passwords) {

@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
+import java.util.List;
 import user_function.data;
 
 public class RegisterPanel extends JPanel {
@@ -86,41 +87,42 @@ public class RegisterPanel extends JPanel {
                 char[] ConfirmPassword = ConfirmPasswordField.getPassword();
                 String gmail = emailField.getText();
                 //todo: logic for adding new user
-                if (Arrays.equals(password, ConfirmPassword)) {
-                    String[] result = new data().user_readout(username);
+                String[] result = new data().user_readout(username);
+                List<String> gmail_list = new data().gmail_list();
+                // Normalize the input string
+                gmail = gmail.replaceAll("[^\\p{Alnum}]", "");
+                // Normalize the strings in the gmail_list
+                for (int i = 0; i < gmail_list.size(); i++) {
+                    String normalized = gmail_list.get(i).replaceAll("[^\\p{Alnum}]", "");
+                    gmail_list.set(i, normalized);
+                }
 
-                    if (!gmail.contains("@")) {
-                        System.out.println(gmail);
-                    }
-
-                    if (username.isEmpty()) {
-                        JOptionPane.showMessageDialog(frame, "Please Enter your username.");
-                    } else if (gmail.isEmpty()) {
-                        JOptionPane.showMessageDialog(frame, "Please Enter your Email.");
-                    } else if (!gmail.contains("@")) {
-                        JOptionPane.showMessageDialog(frame, "Please Enter correct Email format.");
-                    } else if (password.length == 0) {
-                        JOptionPane.showMessageDialog(frame, "Please Enter Your password.");
-                    } else if (ConfirmPassword.length == 0) {
-                        JOptionPane.showMessageDialog(frame, "Please confirm password.");
-                    } else {
-                        if (!result[0].equals("None")) {
-                            JOptionPane.showMessageDialog(frame, "Username already exist.");
-                        } else if (result[1].equals(gmail)) {
-                            JOptionPane.showMessageDialog(frame, "Gmail already exist.");
-                        } else {
-                            data.user_register(username, new String(password), gmail);
-                            JOptionPane.showMessageDialog(frame, "Congrat!!! You Registered, return to login page.");
-                            // display login screen
-                            frame.getContentPane().removeAll();
-                            new LoginPanel(frame, width);
-                            frame.revalidate();
-                            frame.repaint();
-                        }
-                    }
-
-                } else {
+                if (username.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please Enter your username.");
+                } else if (gmail.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please Enter your Email.");
+                } else if (!gmail.contains("@".replaceAll("[^\\p{Alnum}]", ""))) {
+                    JOptionPane.showMessageDialog(frame, "Please Enter correct Email format.");
+                } else if (password.length == 0) {
+                    JOptionPane.showMessageDialog(frame, "Please Enter Your password.");
+                } else if (ConfirmPassword.length == 0) {
+                    JOptionPane.showMessageDialog(frame, "Please confirm password.");
+                } else if (!Arrays.equals(password, ConfirmPassword)) {
                     JOptionPane.showMessageDialog(frame, "Check your confirm password");
+                } else {
+                    if (!result[0].equals("None")) {
+                        JOptionPane.showMessageDialog(frame, "Username already exist.");
+                    } else if (gmail_list.contains(gmail)) {
+                        JOptionPane.showMessageDialog(frame, "Gmail already exist.");
+                    } else {
+                        data.user_register(username, new String(password), gmail);
+                        JOptionPane.showMessageDialog(frame, "Congrat!!! You Registered, return to login page.");
+                        // display login screen
+                        frame.getContentPane().removeAll();
+                        new LoginPanel(frame, width);
+                        frame.revalidate();
+                        frame.repaint();
+                    }
                 }
                 System.out.println();
 
