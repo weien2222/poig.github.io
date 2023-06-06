@@ -56,7 +56,9 @@ public class LoginPanel {
                 // open new page
                 frame.setVisible(false);
                 new menu();
-            } else {
+            } else if (username.isEmpty() || password.length == 0){
+                JOptionPane.showMessageDialog(frame, "please enter your username or password");
+            } else{
                 JOptionPane.showMessageDialog(frame, "Incorrect username or password");
             }
         });

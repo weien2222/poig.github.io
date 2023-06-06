@@ -33,6 +33,7 @@ public class menu extends JPanel {
         int height = (int) (screenSize.getHeight() * 0.5);
         // for user-log
         System.out.println("Enter menu");
+        System.out.println(width +  "" + height);
         menu.setSize(width, height);
         menu.setTitle("menu"); // set title here
         
@@ -134,7 +135,47 @@ public class menu extends JPanel {
             main.main(new String[0]);
         });
         
+        // Text area to display submitted feedback
+        JPanel panel = new JPanel(new BorderLayout());
+        JTextArea feedbackArea = new JTextArea();
+        feedbackArea.setEditable(false);
+        
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        constraints.gridwidth = 6;
+        constraints.gridheight = 6;
+        panel.setPreferredSize(new Dimension(400, 200));
+        
+        Font panel_font = new Font("Arial", Font.PLAIN, width/60);
+        // Button to submit feedback
+        JButton submitButton = new JButton("Submit Feedback");
+        submitButton.setFont(panel_font);
+        JLabel FeedbackLabel = new JLabel("Please enter your feedback:");
+        FeedbackLabel.setFont(panel_font);
+        
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Show an input dialog to get feedback from the user
+                String feedback = JOptionPane.showInputDialog(menu, FeedbackLabel, "Feedback", JOptionPane.PLAIN_MESSAGE);
+
+                // Add the submitted feedback to the text area
+                if (feedback != null && feedback.length() > 1) {
+                    
+                    feedbackArea.append("-  " + feedback + "\n" + "\n");
+                }
+            }
+        });
+
+        // Add the components to the frame
+        panel.add(new JScrollPane(feedbackArea), BorderLayout.CENTER);
+        panel.add(submitButton, BorderLayout.SOUTH);
+        menu.add(panel,constraints);
+        
         menu.setVisible(true);
         menu.setLocationRelativeTo(null); // Center the frame on the screen
+    }
+    public static void main(String[] args) {
+        new menu();
     }
 }
