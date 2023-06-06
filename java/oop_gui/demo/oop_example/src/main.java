@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import user_function.data;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,6 +33,8 @@ public class main {
         int height = (int) (screenSize.getHeight() * 0.5);
         System.out.println("width, height: " + width +", "+ height);
         frame.setSize(width, height);
+        
+        data.user_register("admin", "admin", "admin@gmail.com");
         
         new LoginPanel(frame, width);
        

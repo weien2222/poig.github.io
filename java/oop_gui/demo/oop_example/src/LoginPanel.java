@@ -2,9 +2,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import user_function.data;
+
+
 
 public class LoginPanel {
-    
     public LoginPanel(JFrame frame, int width){
         frame.setTitle("Login Form"); // set title here
         frame.setLayout(new GridBagLayout());
@@ -51,15 +53,18 @@ public class LoginPanel {
             System.out.println("Password: " + new String(password));
             
             // todo: the login logic happen here
-            //example
-            if (username.equals("admin") && new String(password).equals("admin")) {
-                // open new page
-                frame.setVisible(false);
-                new menu();
-            } else if (username.isEmpty() || password.length == 0){
+            String result = new data().user_login(username, new String(password));
+                    //(username.equals("admin") && new String(password).equals("admin")) 
+            if (username.isEmpty() || password.length == 0){
                 JOptionPane.showMessageDialog(frame, "please enter your username or password");
-            } else{
+            } else if ("pass".equals(result)){
+                // open new page
+                frame.dispose();
+                new menu(username);
+            } else if ("error".equals(result)) {
                 JOptionPane.showMessageDialog(frame, "Incorrect username or password");
+            } else if ("none".equals(result)){
+                JOptionPane.showMessageDialog(frame, "username don't exist");
             }
         });
         // create register button
@@ -83,6 +88,7 @@ public class LoginPanel {
         });
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+   
 
 
 }

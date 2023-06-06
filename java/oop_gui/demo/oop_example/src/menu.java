@@ -17,7 +17,7 @@ import java.awt.event.*;
 
 public class menu extends JPanel {
             
-    public menu() {
+    public menu(String username) {
         // create new JFrame for new page here, but we want to direct to another class/ function
         
         try {
@@ -161,8 +161,7 @@ public class menu extends JPanel {
 
                 // Add the submitted feedback to the text area
                 if (feedback != null && feedback.length() > 1) {
-                    
-                    feedbackArea.append("-  " + feedback + "\n" + "\n");
+                    feedbackArea.append(username + " :  " + feedback + "\n");
                 }
             }
         });
@@ -176,6 +175,6 @@ public class menu extends JPanel {
         menu.setLocationRelativeTo(null); // Center the frame on the screen
     }
     public static void main(String[] args) {
-        new menu();
+        new menu("test");
     }
 }
