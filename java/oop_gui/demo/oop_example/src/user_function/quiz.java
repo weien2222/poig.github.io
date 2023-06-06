@@ -506,7 +506,7 @@ public class quiz extends JPanel {
 
         quiz.setLayout(new GridBagLayout());
         // font-size
-        font = new Font("Arial", Font.PLAIN, width / 40);
+        font = new Font("Arial", Font.PLAIN, width / 30);
 
         constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
