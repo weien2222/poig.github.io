@@ -55,8 +55,7 @@ public class data {
         return empty_user;
 
     }
-    
-    
+
     public List gmail_list() {
         Map empty_user = user_info();
         List gmails = new ArrayList();
@@ -67,17 +66,15 @@ public class data {
         return gmails;
     }
 
-    
-    
     public String[] user_readout(String username) {
-        
+
         Map empty_user = user_info();
         try {
             user_profile userinfo = (user_profile) empty_user.get(username);
-            String [] returninfo = {userinfo.password, userinfo.gmail,userinfo.bio};
+            String[] returninfo = {userinfo.password, userinfo.gmail, userinfo.bio};
             return returninfo;
         } catch (RuntimeException e) {
-            System.out.println("user exist");
+            System.out.println("user not exist");
             String[] none = {"None"};
             return none;
         }
@@ -120,7 +117,7 @@ public class data {
                 for (Map.Entry<String, user_profile> entry : sample_user.entrySet()) {
                     writer.writeBytes(entry.getKey() + ": " + entry.getValue().password + "; " + entry.getValue().gmail + "; " + entry.getValue().bio + "\n");
                 }
-                System.out.println("create and write file");
+                System.out.println("create and write user file");
 
             } else {
                 // if already exist check if not exist then add them
@@ -132,11 +129,48 @@ public class data {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("append file");
+                System.out.println("append user file");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void user_comment(String comments) {
+
+        File usercomment = new File("userdata/comments.txt");
+        try {
+            RandomAccessFile writer = new RandomAccessFile(usercomment, "rw");
+
+            writer.writeBytes(comments);
+            System.out.println("create and write commment file" + "\n");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String read_user_comment() {
+        StringBuilder sb = new StringBuilder();
+        try (RandomAccessFile reader = new RandomAccessFile(new File("userdata/comments.txt"), "r")) {
+            //}
+            //try (BufferedReader reader = new BufferedReader(new FileReader("dictionary.txt"))) {
+            String line = reader.readLine();
+            
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = reader.readLine();
+            }
+            return sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "none";
+    }
+    
+    public String edit_user(){
+        return "";
     }
 
     public void quiz_read() {
@@ -149,8 +183,13 @@ public class data {
 
     public static void main(String[] args) {
         //new user_login("what", "123");
-        String result = new data().user_login("admin", "admin");
-        System.out.println(result);
+        //String result = new data().user_login("admin", "admin");
+        //System.out.println(result);
+
+        new data().user_comment("test");
+        String result = new data().read_user_comment();
+        System.out.print(result);
+
     }
 
 }
