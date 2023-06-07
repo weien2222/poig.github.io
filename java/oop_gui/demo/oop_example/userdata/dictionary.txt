@@ -1,2 +1,2 @@
-admin: admin; admin@gmail.com; 
-poig: poig; poiggmailcom; 
+admin: admin; admin@gmail.com; ; true
+poig: poig; poiggmailcom; ; false

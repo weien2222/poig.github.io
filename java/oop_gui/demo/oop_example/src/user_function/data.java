@@ -24,11 +24,13 @@ class user_profile {
     String password;
     String gmail;
     String bio;
+    String admin;
 
-    user_profile(String password, String gmail, String bio) {
+    user_profile(String password, String gmail, String bio, String admin) {
         this.password = password;
         this.gmail = gmail;
         this.bio = bio;
+        this.admin = admin;
     }
 }
 
@@ -46,7 +48,7 @@ public class data {
 
                 String[] parts = line.split(": ");
                 String[] user_parts = parts[1].split(";");
-                empty_user.put(parts[0], new user_profile(user_parts[0], user_parts[1], user_parts[2]));
+                empty_user.put(parts[0], new user_profile(user_parts[0], user_parts[1], user_parts[2], user_parts[3]));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -71,7 +73,7 @@ public class data {
         Map empty_user = user_info();
         try {
             user_profile userinfo = (user_profile) empty_user.get(username);
-            String[] returninfo = {userinfo.password, userinfo.gmail, userinfo.bio};
+            String[] returninfo = {userinfo.password, userinfo.gmail, userinfo.bio, userinfo.admin};
             return returninfo;
         } catch (RuntimeException e) {
             System.out.println("user not exist");
@@ -104,7 +106,7 @@ public class data {
 
         // create data structure
         Map<String, user_profile> sample_user = new HashMap<>();
-        sample_user.put(username, new user_profile(password, gmail, ""));
+        sample_user.put(username, new user_profile(password, gmail, "","false"));
         //sample_user.put("poig", new user_profile("poig", "poig@gmail.com", "so fucked"));
 
         File userdata = new File("userdata/dictionary.txt");

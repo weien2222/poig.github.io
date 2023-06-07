@@ -44,10 +44,31 @@ public class menu extends JPanel {
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.gridx = 0;
         constraints.gridy = 0;
-
+        
         constraints.gridx = 1;
         constraints.gridy = 0;
         constraints.gridwidth = 1;
+        JButton ArticleButton = new JButton("Article");
+        ArticleButton.setFont(font);
+        menu.add(ArticleButton, constraints);
+        ArticleButton.addActionListener((ActionEvent e) -> {
+            //do something
+            ArticleButton.setEnabled(false);
+            Article article = new Article(width, height);
+
+            // Add a WindowListener to enable the button when the new JFrame is closed
+            article.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    ArticleButton.setEnabled(true);
+                }
+            });
+        });
+        
+
+        constraints.gridx = 3;
+        constraints.gridy = 0;
+        constraints.gridwidth = 8;
         JButton loginButton = new JButton("Quiz");
         loginButton.setFont(font);
         menu.add(loginButton, constraints);
@@ -66,45 +87,8 @@ public class menu extends JPanel {
             });
         });
 
-        constraints.gridx = 3;
-        constraints.gridy = 0;
-        constraints.gridwidth = 2;
-        JButton NewsPaper = new JButton("Newspaper");
-        NewsPaper.setFont(font);
-        menu.add(NewsPaper, constraints);
-        NewsPaper.addActionListener((ActionEvent e) -> {
-            //do something
-            NewsPaper.setEnabled(false);
-            NewsPaper NewNewsPaper = new NewsPaper(width, height);
 
-            // Add a WindowListener to enable the button when the new JFrame is closed
-            NewNewsPaper.addQuizWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    NewsPaper.setEnabled(true);
-                }
-            });
-        });
-
-        constraints.gridx = 5;
-        constraints.gridy = 0;
-        constraints.gridwidth = 2;
-        JButton ArticleButton = new JButton("Article");
-        ArticleButton.setFont(font);
-        menu.add(ArticleButton, constraints);
-        ArticleButton.addActionListener((ActionEvent e) -> {
-            //do something
-            ArticleButton.setEnabled(false);
-            Article article = new Article(width, height);
-
-            // Add a WindowListener to enable the button when the new JFrame is closed
-            article.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    ArticleButton.setEnabled(true);
-                }
-            });
-        });
+        
 
         constraints.gridx = 0;
         constraints.gridy = 1;
@@ -114,6 +98,16 @@ public class menu extends JPanel {
         menu.add(calculatorButton, constraints);
         calculatorButton.addActionListener((ActionEvent e) -> {
             //do something
+            calculatorButton.setEnabled(false);
+            CC_Calculator calculator = new CC_Calculator(width, height);
+
+            // Add a WindowListener to enable the button when the new JFrame is closed
+            calculator.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    calculatorButton.setEnabled(true);
+                }
+            });
         });
 
         constraints.gridx = 3;
@@ -150,7 +144,7 @@ public class menu extends JPanel {
 
         // Text area to display submitted feedback
         JPanel panel = new JPanel(new BorderLayout());
-        JTextArea feedbackArea = new JTextArea(11,33);
+        JTextArea feedbackArea = new JTextArea(11,30);
         feedbackArea.setEditable(false);
         feedbackArea.setLineWrap(true);
         feedbackArea.setWrapStyleWord(true);
@@ -190,7 +184,7 @@ public class menu extends JPanel {
         panel.add(new JScrollPane(feedbackArea), BorderLayout.CENTER);
         panel.add(submitButton, BorderLayout.SOUTH);
         
-        
+        // todo: admin-user if
         menu.add(panel, constraints);
         
 
@@ -202,7 +196,4 @@ public class menu extends JPanel {
         new menu("test");
     }
 
-    public menu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
