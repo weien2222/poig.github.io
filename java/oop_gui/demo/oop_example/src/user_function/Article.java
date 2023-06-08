@@ -1,29 +1,60 @@
-package user_function;
-import main.menu;
-import main.main;
+package oopassignment;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.RandomAccessFile;
+
 
 public class Article {
     // add to main: public static String inp1, inp2, inp3;
     // add to main: public static int count=1;
+    String[] files = {"articles/sustainable_fashion.txt","articles/sustainable_living.txt","articles/global_warming.txt"};
+    String[] content = {"", "", ""};
     
-    JFrame f;
-    
-    public Article(int width, int height){
-        String a1Content = "Sustainable Fashion";
-        String a2Content = "Sustainable Living";
-        String a3Content = "Global Warming";
+    public void saveText(String f, String s) throws IOException{
+        PrintWriter out = new PrintWriter(f);
+        out.println(s);
+        out.close();
+
+    }
+
+    public void article() throws IOException{
+        StringBuffer buffer1 = new StringBuffer();
+        RandomAccessFile r1 = new RandomAccessFile(new File(files[0]), "r");
+        while (r1.getFilePointer() < r1.length()) {
+            buffer1.append(r1.readLine() + System.lineSeparator());
+        }
+        content[0] = buffer1.toString();
+        
+        StringBuffer buffer2 = new StringBuffer();
+        RandomAccessFile r2 = new RandomAccessFile(new File(files[1]), "r");
+        while (r2.getFilePointer() < r2.length()) {
+            buffer2.append(r2.readLine() + System.lineSeparator());
+        }
+        content[1] = buffer2.toString();
+        
+        StringBuffer buffer3 = new StringBuffer();
+        RandomAccessFile r3 = new RandomAccessFile(new File(files[2]), "r");
+        while (r3.getFilePointer() < r3.length()) {
+            buffer3.append(r3.readLine() + System.lineSeparator());
+        }
+        content[2] = buffer3.toString();
+ 
         if(main.count==1){
-            main.inp1 = a1Content;
-            main.inp2 = a2Content;
-            main.inp3 = a3Content;
+            main.inp1 = content[0];
+            main.inp2 = content[1];
+            main.inp3 = content[2];
             main.count++;
         }
         
-        f = new JFrame();
+        JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int) (screenSize.getWidth() * 0.5);
+        int height = (int) (screenSize.getHeight() * 0.5);
         f.setSize(width, height);
         f.setLocationRelativeTo(null);
         
@@ -61,7 +92,6 @@ public class Article {
         ap.add(tp,BorderLayout.NORTH);
         
         JButton back = new JButton("Back to Main Menu");
-        back.setFont(font);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,15 +99,20 @@ public class Article {
                     main.inp1 = list1.getText();
                     main.inp2 = list2.getText();
                     main.inp3 = list3.getText();
+                    try{
+                        saveText(files[0],main.inp1);
+                        saveText(files[1],main.inp2);
+                        saveText(files[2],main.inp3);
+                    }catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 } else{
                     main.inp1 = main.inp1;
                     main.inp2 = main.inp2;
                     main.inp3 = main.inp3;
                 }
-                System.out.println(list1.getText());
-                System.out.println(main.inp1);
                 f.setVisible(false);
-
+                new menu();
             }
         });
         
@@ -85,12 +120,5 @@ public class Article {
         ap.add(back,BorderLayout.WEST);
         f.add(ap);
         f.setVisible(true);
-    }
-    public void addWindowListener(WindowListener listener) {
-        this.f.addWindowListener(listener);
-    }
-    
-    public static void main(String[] args) {
-        new Article(1600, 600);
     }
 }
